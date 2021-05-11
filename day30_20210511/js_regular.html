@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function idcheck(){
+            var exp = /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,10}$/;
+            // 정규식 표현이다.
+            // 인터넷 찾아보면 다른 여러가지 방법이 나온다.
+            // 소괄호()에 쓴 내용들은 반드시 1개이상은 사용되야 한다.
+            // (?=.*[a-z]) : 영문소문자
+            // (?=.*\d) : 숫자
+            // [a-z\d] : 범위
+            // {6,10} : 자릿수를 의미한다.
+            // 영문 대소문자, 숫자를 포함
+            var exp1 = /^(?=.*[a-z])(?=.*[A-Z])[a-z A-Z\d]{6,10}$/;
+            // (?=.*[A-Z]) : 영문대문자
+            // [a-z A-Z\d] : 범위
+            var exp2 = /^(?=.*[a-z])(?=.*\d)(?=.*[-_])[a-z\d-_]{5,20}$/;
+            // 네이버 아이디 만들 때
+            // 영어소문자,숫자,(-),(_)만 사용가능
+
+            var id = document.getElementById('id').value;
+            var result = document.getElementById('idcheck');
+
+            if(id.length == 0){
+                result.style.color = 'red';
+                result.innerHTML = '필수입력정보입니다.'
+            } else if(id.match(exp2)){
+                // 정규식을 사용할 때는 꼭 입력한 값.match(정규식을표현한 변수)의 형식을 가져야 한다.
+                result.style.color = 'green';
+                result.innerHTML = '유효한 id형식입니다.';
+            } else {
+                result.style.color = 'red';
+                result.innerHTML = '6~10글자 숫자,영문 소문자를 사용해주세요';
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- 정규식(regular expression) : 영문,소문자,숫자,특수기호만 사용가능하다라는 것
+                        : 특히 아이디나 비밀번호를 설정할 때 두는 제약
+                        : 특정위치에 올 수 있는 자릿수, 문자 or 숫자 등의 제약을 두는 것을 정규식이라 한다.-->
+    아이디 : <input type="text" id="id" onblur="idcheck()" placeholder="영문소문자,숫자, 6~10글자 이내로 입력해 주세요"><br>
+    <span id="idcheck"></span>
+    <button onclick="idcheck()">id정규식 체크</button>
+    
+</body>
+</html>

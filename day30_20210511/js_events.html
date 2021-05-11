@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function test1(){
+            console.log('함수호출');
+        }
+
+        function test2(){
+            console.log('함수호출');
+            document.getElementById('id3').innerHTML = 
+                document.getElementById('id2').value;
+        }
+
+        function test3(){
+            console.log('onkeydown함수호출');
+            document.getElementById('id5').innerHTML = 
+                document.getElementById('id4').value;
+        }
+
+        function test4(){
+            console.log('onkeydown함수호출');
+            document.getElementById('id7').innerHTML = 
+                document.getElementById('id6').value;
+        }
+    </script>
+</head>
+<body>
+    입력1 : <input type="text" id="id1" onchange="test1()"><br>
+    입력2 : <input type="text" id="id2" onkeyup="test2()"><br>
+    <!-- onkeyup : 키보드 입력시 발생하는 이벤트를 의미한다. 
+                : 실시간으로 입력과 동시에 반응을 한다.
+                :키를 누르고 키보드에서 손을 뗄때 발생한다.-->
+
+    입력3 : <input type="text" id="id4" onkeydown="test3()"><br>
+    <!-- onkeydown : 키보드를 입력 시 발생하는 이벤트이지만
+                    onkeyup과는 다르게 onkeydown은 사용자가 입력한것보다 하나 적게 화면에 표시된다. 
+                    : 키를 누르고 다음 키를 누를 때 발생한다.-->
+
+    입력4 : <input type="text" id="id6" onkeypress="test4()"><br>
+    <!-- onkeypress : 사용자가 엔터or스페이스바를 눌렀을 때 발생하는 이벤트이다. -->
+    
+    <p id="id3"></p>
+    <p id="id5"></p>
+    <p id="id7"></p>
+</body>
+</html>

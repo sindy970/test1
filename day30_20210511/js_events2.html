@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function test1(){
+            console.log('test1 함수호출');
+        }
+        function test2(){
+            console.log('test2 함수호출');
+            document.getElementById('id2').style.backgroundColor='red';
+        }
+        function test3(){
+            console.log('test3 함수호출');
+            document.getElementById('id3').style.color = 'red';
+        }
+        function test4(){
+            console.log('test4 함수호출');
+            document.getElementById('id3').style.color = 'blue';
+        }
+        function test5(){
+            console.log('test5 함수호출');
+            var ele = document.getElementById('id4');
+            ele.style.border = '5px red solid';
+        }
+        function test6(){
+            console.log('test6 함수호출');
+            var ele = document.getElementById('id4');
+            ele.style.border = '5px blue solid';
+        }
+    </script>
+    <style>
+        #id4{
+            background-color: yellow;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <p id="id1" onclick="test1()">내용1</p>
+    <!-- 꼭 버튼이 아니어도 일반 문자에도 onclick을 줄수 있다.
+            해당 글자를 클릭하게 되면 함수가 호출된다. -->
+
+    <p id="id2" ondblclick="test2()">내용2</p>
+    <!-- ondblclick : 더블클릭을 했을때 함수가 호출된다.
+                :즉, 더블클릭한 경우에 이벤트가 발생한다. -->
+
+    <p id="id3" onmousedown="test3()" onmouseup="test4()">내용3</p>
+    <!-- onmousedown : 마우스로 누르고 있을 때 발생하는 이벤트
+         onmouseup : 마우스를 땠을 때 발생하는 이벤트이다. -->
+
+    <div id="id4" onmouseover="test5()" onmouseout="test6()">
+        <!-- onmouseover : 마우스가 해당 칸 or 글자 위에 있을 경우에 발생하는 이벤트
+            onmouseout : 마우스가 해당 칸 or 글자 범위를 벗어났을 경우에 발생하는 이벤트 -->
+        마우스를 들락달락
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- 비밀번호,비밀번호 확인(정규식이용하여) : 내풀이 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>password</title>
+    <script>
+        function pwdcheck(){
+            var exp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$-])[a-z A-Z\d-_]{8,18}$/;
+            // 정규식 표현
+            var pwd = document.getElementById('pwd').value;
+            var pwdcheck = document.getElementById('pwdcheck');
+            var result = document.getElementById('result');
+
+            console.log(pwd);
+            console.log(pwdcheck.value);
+            console.log(pwdcheck.value == pwd);
+            if(pwd.length == 0){
+                result.style.color = 'red';
+                result.innerHTML = '필수입력 사항입니다.';
+            } else if(pwd.match(exp)){
+                result.style.color = 'green';
+                result.innerHTML = '유효한 형식입니다.';
+            } else{
+                result.style.color = 'red';
+                result.innerHTML = '유효하지 않은 형식입니다.';
+            }
+
+            if(pwdcheck.value == pwd){
+                result.style.color = 'green';
+                result.innerHTML = '일치';
+            }
+        }
+    </script>
+</head>
+<body>
+    비밀번호 : <input type="text" id="pwd" onblur="pwdcheck()" placeholder="비밀번호를 입력하세요"><br>
+    비밀번호 확인 : <input type="text" id="pwdcheck" onkeyup="pwdcheck()" placeholder="비밀번호를 다시 입력하세요"><br>
+    <span id="result"></span>
+</body>
+</html>

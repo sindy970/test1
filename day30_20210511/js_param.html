@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function test1(var1){
+            // 매개변수 생성시 타입은 별도로 지정해 주지 않는다.
+            console.log('test1 함수호출');
+            console.log(var1);
+        }
+    </script>
+</head>
+<body>
+    <!-- 함수 호출시 매개값 넘기기 -->
+    입력 1 : <input type="text" id="id1" value="기본값"  onkeyup="test1(this)"><br>
+    <!-- this : 태그 자체를 매개값으로 넘긴다. -->
+
+    입력 1 : <input type="text" id="id1" value="기본값"  onkeyup="test1(this.id)"><br>
+    <!-- this.id : 해당 태그의 id의 속성값이 넘어간다. -->
+
+    입력 1 : <input type="text" id="id1" value="기본값"  onkeyup="test1(this.value)"><br>
+    <!-- this.value : 해당 태그의 value값이 넘어간다. -->
+
+    입력 1 : <input type="text" id="id1" value="기본값"  onkeyup="test1('abcde')"><br>
+    <!-- 싱글쿼터로 특정 값을 입력했을 경우에는 특정 값이 넘어간다. -->
+</body>
+</html>
